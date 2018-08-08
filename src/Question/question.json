@@ -1,0 +1,21 @@
+{
+  "Question1": {
+    "Type": "SelectOne",
+    "Subject": "Q1",
+    "Answer": ["A1", "A2", "A3", "A4"]
+  },
+  "Question2": {
+    "Type": "SelectOne",
+    "Subject": "Q2",
+    "Answer": ["B1", "B2", "B3", "B4"]
+  },
+  "Question3": {
+    "Type": "SelectMulti",
+    "Subject": "Q3",
+    "Answer": ["C1", "C2", "C3", "C4"]
+  },
+  "Question4": {
+    "Type": "WriteAny",
+    "Subject": "Q4"
+  }
+}
