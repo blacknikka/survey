@@ -1,0 +1,53 @@
+<template>
+  <div class="container">
+    <div class="title">
+      {{question.Question}}
+    </div>
+    <div class="subject">
+      {{question.Subject}}
+    </div>
+    <textarea v-model="input"></textarea>
+  </div>
+</template>
+
+<script>
+import Dbg from '../Util/Debug';
+
+export default {
+  props: {
+    question: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+  },
+  data() {
+    return {
+      input: '',
+    };
+  },
+  mounted() {
+    Dbg.console(this.list);
+  },
+};
+</script>
+
+<style scoped>
+.container {
+  padding: 10px;
+  background-color: rgb(128, 206, 125);
+  display: flex;
+  flex-direction: column;
+}
+.ckeck-box-content {
+  margin-left: 5px;
+}
+.title {
+  font-size: 20px;
+}
+.subject {
+  font-size: 15px;
+  font-weight: bold;
+}
+</style>
