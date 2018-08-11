@@ -1,16 +1,17 @@
 <template>
   <div class="mainpage">
-    <radio-button :list="list" />
+    <questions :question="list" />
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import RadioButton from './RadioButton';
 import Question from '../Question/question.json';
-import Dbg from '../Util/Debug';
+// import Dbg from '../Util/Debug';
 
-Vue.component('radio-button', RadioButton);
+import Questions from './Questions';
+
+Vue.component('questions', Questions);
 
 export default {
   data() {
@@ -19,10 +20,10 @@ export default {
     };
   },
   mounted() {
-    const json = Question.Question1;
-    Dbg.console(json);
-
-    json.Answer.every(d => this.list.push(d));
+    // Question.forEach((element) => {
+    //   this.list.push(element);
+    // });
+    this.list = Question;
   },
 };
 </script>
