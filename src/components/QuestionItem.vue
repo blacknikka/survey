@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <radio-button v-if="qlist.Type === 'SelectOne'" :list="qlist.Answer" :name="qlist.Question" />
+    <!-- eslint-disable-next-line max-len -->
+    <radio-button v-if="qlist.Type === 'SelectOne'" :question="qlist" />
   </div>
 </template>
 

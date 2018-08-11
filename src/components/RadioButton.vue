@@ -1,7 +1,16 @@
 <template>
   <div class="container">
-    <span v-for="(item, index) in list" :key="index">
-      <input type="radio" :name="name" :value="item">{{item}}
+    <div class="title">
+      {{question.Question}}
+    </div>
+    <div class="subject">
+      {{question.Subject}}
+    </div>
+    <span v-for="(item, index) in question.Answer" :key="index">
+      <input type="radio" :name="question.Question" :value="item">
+      <span class="radio-button-content">
+        {{item}}
+      </span>
     </span>
   </div>
 </template>
@@ -11,14 +20,11 @@ import Dbg from '../Util/Debug';
 
 export default {
   props: {
-    list: {
-      type: Array,
+    question: {
+      type: Object,
       default() {
-        return [];
+        return {};
       },
-    },
-    name: {
-      type: String,
     },
   },
   data() {
@@ -36,5 +42,15 @@ export default {
   background-color: rgb(128, 206, 125);
   display: flex;
   flex-direction: column;
+}
+.radio-button-content {
+  margin-left: 5px;
+}
+.title {
+  font-size: 20px;
+}
+.subject {
+  font-size: 15px;
+  font-weight: bold;
 }
 </style>

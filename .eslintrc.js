@@ -12,6 +12,7 @@ module.exports = {
   // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
 
   extends: [
+    'prettier',
     'plugin:vue/essential',
     'plugin:prettier/recommended',
     'airbnb-base',
@@ -59,7 +60,7 @@ module.exports = {
     ],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'max-len': 'off',
+    'max-len': ['error', {code: 80, tabWidth: 2, ignoreUrls: true}],
     'comma-dangle': ['error', 'always-multiline'],
   },
 };

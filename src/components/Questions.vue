@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <!-- eslint-disable-next-line max-len -->
     <question-item :qlist="item" v-for="(item, index) in question" :key="index" />
   </div>
 </template>
