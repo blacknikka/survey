@@ -7,16 +7,18 @@
       {{question.Subject}}
     </div>
     <span v-for="(item, index) in question.Answer" :key="index">
-      <input type="checkbox" :name="question.Question" :value="item">
+      <!-- eslint-disable-next-line max-len -->
+      <input type="checkbox" :name="question.Question" :value="item" v-model="chechresult">
       <span class="ckeck-box-content">
         {{item}}
       </span>
     </span>
+    <div v-if="0 < chechresult.length">{{chechresult}}</div>
   </div>
 </template>
 
 <script>
-import Dbg from '../Util/Debug';
+// import Dbg from '../Util/Debug';
 
 export default {
   props: {
@@ -28,10 +30,12 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      chechresult: [],
+    };
   },
   mounted() {
-    Dbg.console(this.list);
+    // Dbg.console(this.list);
   },
 };
 </script>

@@ -1,17 +1,20 @@
 <template>
   <div class="mainpage">
-    <questions :question="list" />
+    <questions :question="list" ref="submit"/>
+    <submit-button text="submit" @submit-event="SubmitedEvent" />
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
 import Question from '../Question/question.json';
-// import Dbg from '../Util/Debug';
+import SubmitButton from './SubmitButton';
+import Dbg from '../Util/Debug';
 
 import Questions from './Questions';
 
 Vue.component('questions', Questions);
+Vue.component('submit-button', SubmitButton);
 
 export default {
   data() {
@@ -24,6 +27,12 @@ export default {
     //   this.list.push(element);
     // });
     this.list = Question;
+  },
+  methods: {
+    SubmitedEvent() {
+      Dbg.console('pushed');
+      this.$refs.submit.$emit('submit-event');
+    },
   },
 };
 </script>

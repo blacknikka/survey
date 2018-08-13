@@ -6,13 +6,12 @@
     <div class="subject">
       {{question.Subject}}
     </div>
-    <textarea v-model="input"></textarea>
+    <textarea class="text-area" v-model="input"></textarea>
+    <div>{{input}}</div>
   </div>
 </template>
 
 <script>
-import Dbg from '../Util/Debug';
-
 export default {
   props: {
     question: {
@@ -27,9 +26,6 @@ export default {
       input: '',
     };
   },
-  mounted() {
-    Dbg.console(this.list);
-  },
 };
 </script>
 
@@ -40,8 +36,8 @@ export default {
   display: flex;
   flex-direction: column;
 }
-.ckeck-box-content {
-  margin-left: 5px;
+.text-area {
+  height: 100px;
 }
 .title {
   font-size: 20px;

@@ -7,16 +7,18 @@
       {{question.Subject}}
     </div>
     <span v-for="(item, index) in question.Answer" :key="index">
-      <input type="radio" :name="question.Question" :value="item">
+      <!-- eslint-disable-next-line max-len -->
+      <input type="radio" :name="question.Question" :value="item" v-model="checkresult">
       <span class="radio-button-content">
         {{item}}
       </span>
     </span>
+    <div>{{checkresult}}</div>
   </div>
 </template>
 
 <script>
-import Dbg from '../Util/Debug';
+// import Dbg from '../Util/Debug';
 
 export default {
   props: {
@@ -28,10 +30,20 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      checkresult: [],
+    };
+  },
+  created() {
+    this.$on('get-data', this.GetData);
   },
   mounted() {
-    Dbg.console(this.list);
+    // Dbg.console(this.list);
+  },
+  methods: {
+    GetData() {
+      return this.checkresult;
+    },
   },
 };
 </script>
