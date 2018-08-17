@@ -35,6 +35,7 @@ export default {
   },
   mounted() {
     // Dbg.console(this.list);
+    this.commit();
   },
   created() {
     // init object.
@@ -45,6 +46,7 @@ export default {
     ) {
       this.checkresult[this.question.Answer[index]] = false;
     }
+
     // this.checkresult = new Array(this.question.Answer.length);
     // this.checkresult.forEach(x => {
     //   Dbg.console(x);
@@ -55,6 +57,9 @@ export default {
     edit(e) {
       this.checkresult[e.target.value] = e.target.checked;
 
+      this.commit();
+    },
+    commit() {
       this.$store.commit('UpdateByName', {
         name: this.question.Question,
         data: this.checkresult,

@@ -36,6 +36,7 @@ export default {
   },
   mounted() {
     // Dbg.console(this.list);
+    this.commit(null);
   },
   // computed: {
   //   selectedName: {
@@ -52,12 +53,20 @@ export default {
   // },
   methods: {
     edit(e) {
-      this.$store.commit('UpdateByName', {
-        name: this.question.Question,
-        data: e.target.value,
-      });
+      this.commit(e);
 
       this.checkresult = e.target.value;
+    },
+    commit(e) {
+      let data = e;
+      if (data !== null) {
+        data = data.target.value;
+      }
+
+      this.$store.commit('UpdateByName', {
+        name: this.question.Question,
+        data,
+      });
     },
   },
 };

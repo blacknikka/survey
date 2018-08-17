@@ -6,7 +6,7 @@
     <div class="subject">
       {{question.Subject}}
     </div>
-    <textarea class="text-area" v-model="input"></textarea>
+    <textarea class="text-area" @input="edit($event)"></textarea>
     <div>{{input}}</div>
   </div>
 </template>
@@ -25,6 +25,22 @@ export default {
     return {
       input: '',
     };
+  },
+  created() {
+    this.commit();
+  },
+  methods: {
+    edit(e) {
+      this.input = e.target.value;
+
+      this.commit();
+    },
+    commit() {
+      this.$store.commit('UpdateByName', {
+        name: this.question.Question,
+        data: this.input,
+      });
+    },
   },
 };
 </script>

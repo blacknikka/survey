@@ -66,5 +66,8 @@ module.exports = {
     'arrow-body-style': ['error', 'always'],
     'arrow-parens': ['error', 'as-needed'],
     'no-plusplus': ['error', {allowForLoopAfterthoughts: true}],
+    'space-before-function-paren': 0,
+    'func-call-spacing': 0,
+    'no-spaced-func': 0,
   },
 };
