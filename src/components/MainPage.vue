@@ -1,7 +1,11 @@
 <template>
   <div class="mainpage">
-    <questions :question="list" ref="submit"/>
-    <submit-button text="submit" @submit-event="SubmitedEvent" />
+    <div class="container">
+      <h1>{{title}}</h1>
+      <questions :question="list" ref="submit" />
+      <!-- eslint-disable-next-line max-len -->
+      <submit-button class="submit-container" text="submit" @submit-event="SubmitedEvent" />
+    </div>
   </div>
 </template>
 
@@ -20,13 +24,15 @@ export default {
   data() {
     return {
       list: [],
+      title: '',
     };
   },
   mounted() {
     // Question.forEach((element) => {
     //   this.list.push(element);
     // });
-    this.list = Question;
+    this.list = Question.data;
+    this.title = Question.title;
   },
   methods: {
     SubmitedEvent() {
@@ -51,5 +57,17 @@ li {
 }
 a {
   color: #42b983;
+}
+.mainpage {
+  width: 50%;
+  padding-right: 25%;
+  padding-left: 25%;
+}
+.container {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.submit-container {
+  margin: 2px;
 }
 </style>

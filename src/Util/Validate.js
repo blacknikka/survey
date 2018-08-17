@@ -9,7 +9,7 @@ export default class Validate {
     };
 
     // validate each data.
-    Question.forEach(d => {
+    Question.data.forEach(d => {
       ret.data[d.Question] = {
         error: false,
         message: '',
