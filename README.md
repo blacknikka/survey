@@ -2,6 +2,11 @@
 
 > survey site
 
+## Server
+This survey system need the server program.  
+You get the server from another repository.
+
+
 ## Build Setup
 
 ``` bash

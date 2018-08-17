@@ -10,14 +10,22 @@ const store = new Vuex.Store({
   state: {
     ID: 'default ID',
     InputData: {},
+    IsError: false,
+    ErrorMessage: {},
   },
   actions: {
     SubmitToServer() {
-      Dbg.console(this.state.InputData);
+      this.state.IsError = true;
 
       // validate the data.
-      if (Validate.validate(this.state.InputData) === true) {
+      const result = Validate.validate(this.state.InputData);
+      if (result.result === true) {
         Submit.submit(this.state);
+      } else {
+        // Error is detected.
+        Dbg.console(result);
+        this.state.IsError = true;
+        this.state.ErrorMessage = result.data;
       }
     },
   },

@@ -14,6 +14,7 @@
       </span>
     </span>
     <div>{{checkresult}}</div>
+    <div class="error-text">{{getError}}</div>
   </div>
 </template>
 
@@ -33,6 +34,17 @@ export default {
     return {
       checkresult: '',
     };
+  },
+  computed: {
+    getError() {
+      const error = this.$store.state.ErrorMessage;
+
+      let ret = '';
+      if (error[this.question.Question]) {
+        ret = error[this.question.Question].message;
+      }
+      return ret;
+    },
   },
   mounted() {
     // Dbg.console(this.list);
@@ -88,5 +100,9 @@ export default {
 .subject {
   font-size: 15px;
   font-weight: bold;
+}
+.error-text {
+  color: red;
+  font-size: 20px;
 }
 </style>
