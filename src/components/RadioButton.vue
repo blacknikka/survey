@@ -8,7 +8,7 @@
     </div>
     <span v-for="(item, index) in question.Answer" :key="index">
       <!-- eslint-disable-next-line max-len -->
-      <input type="radio" :name="question.Question" :value="item" v-model="checkresult">
+      <input type="radio" :name="question.Question" :value="item" @input="edit($event)">
       <span class="radio-button-content">
         {{item}}
       </span>
@@ -31,18 +31,33 @@ export default {
   },
   data() {
     return {
-      checkresult: [],
+      checkresult: '',
     };
-  },
-  created() {
-    this.$on('get-data', this.GetData);
   },
   mounted() {
     // Dbg.console(this.list);
   },
+  // computed: {
+  //   selectedName: {
+  //     get: function() {
+  //       return this.$store.state.InputData[this.question.Question];
+  //     },
+  //     set: function(val) {
+  //       this.$store.commit('UpdateByName', {
+  //         name: this.question.Question,
+  //         data: val.target.value,
+  //       });
+  //     },
+  //   },
+  // },
   methods: {
-    GetData() {
-      return this.checkresult;
+    edit(e) {
+      this.$store.commit('UpdateByName', {
+        name: this.question.Question,
+        data: e.target.value,
+      });
+
+      this.checkresult = e.target.value;
     },
   },
 };

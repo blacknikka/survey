@@ -8,7 +8,7 @@
 <script>
 import Vue from 'vue';
 import QuestionItem from './QuestionItem';
-import Dbg from '../Util/Debug';
+// import Dbg from '../Util/Debug';
 
 Vue.component('question-item', QuestionItem);
 
@@ -24,11 +24,7 @@ export default {
   mounted() {
     // this.question.every(d => this.list.push(d));
     // Dbg.console(this.list);
-  },
-  created() {
-    this.$on('submit-event', () => {
-      Dbg.console('Question pushed');
-    });
+    // Dbg.console(this.$store.state.ID);
   },
 };
 </script>

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Dbg from '../Util/Debug';
+// import Dbg from '../Util/Debug';
 
 export default {
   props: {
@@ -22,7 +22,6 @@ export default {
   },
   methods: {
     ButtonPushed() {
-      Dbg.console('clicked');
       this.$emit('submit-event');
     },
   },

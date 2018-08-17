@@ -7,6 +7,7 @@ module.exports = {
   },
   env: {
     browser: true,
+    es6: true,
   },
   // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
   // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
@@ -62,5 +63,8 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'max-len': ['error', {code: 80, tabWidth: 2, ignoreUrls: true}],
     'comma-dangle': ['error', 'always-multiline'],
+    'arrow-body-style': ['error', 'always'],
+    'arrow-parens': ['error', 'as-needed'],
+    'no-plusplus': ['error', {allowForLoopAfterthoughts: true}],
   },
 };

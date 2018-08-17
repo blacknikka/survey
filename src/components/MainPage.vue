@@ -9,7 +9,7 @@
 import Vue from 'vue';
 import Question from '../Question/question.json';
 import SubmitButton from './SubmitButton';
-import Dbg from '../Util/Debug';
+// import Dbg from '../Util/Debug';
 
 import Questions from './Questions';
 
@@ -30,8 +30,7 @@ export default {
   },
   methods: {
     SubmitedEvent() {
-      Dbg.console('pushed');
-      this.$refs.submit.$emit('submit-event');
+      this.$store.dispatch('SubmitToServer');
     },
   },
 };
