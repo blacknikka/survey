@@ -8,7 +8,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    ID: 'default ID',
+    ID: 1,
     InputData: {},
     IsError: false,
     ErrorMessage: {},

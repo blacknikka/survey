@@ -76,7 +76,7 @@ export default {
       }
 
       this.$store.commit('UpdateByName', {
-        name: this.question.Question,
+        name: this.question.No,
         data,
       });
     },

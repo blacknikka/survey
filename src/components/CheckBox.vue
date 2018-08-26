@@ -61,7 +61,7 @@ export default {
     },
     commit() {
       this.$store.commit('UpdateByName', {
-        name: this.question.Question,
+        name: this.question.No,
         data: this.checkresult,
       });
     },
