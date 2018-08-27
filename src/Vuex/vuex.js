@@ -10,13 +10,14 @@ const store = new Vuex.Store({
   state: {
     ID: 1,
     InputData: {},
-    IsError: false,
     ErrorMessage: {},
+
+    // is logged in.
+    LoggedIn: false,
+    LoginToken: '',
   },
   actions: {
     SubmitToServer() {
-      this.state.IsError = true;
-
       // validate the data.
       const result = Validate.validate(this.state.InputData);
       if (result.result === true) {
@@ -24,7 +25,6 @@ const store = new Vuex.Store({
       } else {
         // Error is detected.
         Dbg.console(result);
-        this.state.IsError = true;
         this.state.ErrorMessage = result.data;
       }
     },
@@ -32,6 +32,10 @@ const store = new Vuex.Store({
   mutations: {
     UpdateByName(state, payload) {
       state.InputData[payload.name] = payload.data;
+    },
+    UpdateLoggedInStatus(state, payload) {
+      state.LoggedIn = true;
+      state.LoginToken = payload.token;
     },
   },
 });
