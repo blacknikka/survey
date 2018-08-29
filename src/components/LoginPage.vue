@@ -9,8 +9,8 @@
       <input type="password" v-model="psw" size="30">
 
       <div class="button-container">
-      <!-- eslint-disable-next-line max-len -->
-        <input type="button" value=Login @click="ButtonPushed">
+        <!-- eslint-disable-next-line max-len -->
+        <input type="button" value=Login @click="Login">
       </div>
 
       <div v-if="isError" class="error">
@@ -35,15 +35,43 @@ export default {
     };
   },
   methods: {
-    ButtonPushed() {
+    Login() {
       const data = {
         mail: this.mail,
         psw: this.psw,
       };
-      axios.post('http://localhost:8000/login', data).then(response => {
-        Dbg.console(response);
-        this.$store.dispatch('SubmitToServer', response.data.token);
-      });
+      axios
+        .post('http://localhost:8000/login', data)
+        .then(response => {
+          Dbg.console(response);
+
+          if ('result' in response.data) {
+            if (response.data.result === true) {
+              // save token to vuex.
+              this.$store.commit('UpdateLoggedInStatus', {
+                token: response.data.token,
+                questions: response.data.survey,
+              });
+
+              // Use 'replace'
+              // This method replace the current path.
+              // (not push but replace, DON'T push a path)
+              this.$router.replace({
+                name: 'Main',
+              });
+            } else {
+              this.DoError();
+            }
+          } else {
+            this.DoError();
+          }
+        })
+        .catch(() => {
+          this.DoError();
+        });
+    },
+    DoError() {
+      this.isError = true;
     },
   },
 };

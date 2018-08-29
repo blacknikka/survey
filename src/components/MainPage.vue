@@ -11,7 +11,6 @@
 
 <script>
 import Vue from 'vue';
-import Question from '../Question/question.json';
 import SubmitButton from './SubmitButton';
 // import Dbg from '../Util/Debug';
 
@@ -28,11 +27,14 @@ export default {
     };
   },
   mounted() {
-    // Question.forEach((element) => {
-    //   this.list.push(element);
-    // });
-    this.list = Question.data;
-    this.title = Question.title;
+    if (this.$store.state.LoggedIn === true && this.$store.state.token !== '') {
+      this.list = this.$store.state.Questions;
+      this.title = 'survey sample';
+    } else {
+      this.$router.replace({
+        name: 'Login',
+      });
+    }
   },
   methods: {
     SubmitedEvent() {

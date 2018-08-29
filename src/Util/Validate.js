@@ -1,15 +1,14 @@
-import Question from '../Question/question.json';
 // import Dbg from '../Util/Debug';
 
 export default class Validate {
-  static validate(data) {
+  static validate(data, master) {
     const ret = {
       result: true,
       data: {},
     };
 
     // validate each data.
-    Question.data.forEach(d => {
+    master.forEach(d => {
       ret.data[d.Question] = {
         error: false,
         message: '',

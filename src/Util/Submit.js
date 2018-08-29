@@ -4,7 +4,7 @@ import Dbg from '../Util/Debug';
 export default class Submit {
   static submit(data) {
     Dbg.console('submit exec');
-    Dbg.console(data);
+    // Dbg.console(data);
 
     axios.post('http://localhost:8000/commit', data).then(response => {
       Dbg.console(response);
