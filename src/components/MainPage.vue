@@ -12,7 +12,7 @@
 <script>
 import Vue from 'vue';
 import SubmitButton from './SubmitButton';
-// import Dbg from '../Util/Debug';
+import Dbg from '../Util/Debug';
 
 import Questions from './Questions';
 
@@ -38,7 +38,14 @@ export default {
   },
   methods: {
     SubmitedEvent() {
-      this.$store.dispatch('SubmitToServer');
+      const result = this.$store.dispatch('SubmitToServer');
+      if (result.result === true) {
+        // show result and redirect
+        // this.$router.replace({
+        //   name: 'Login',
+        // });
+        Dbg.console(result);
+      }
     },
   },
 };

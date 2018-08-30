@@ -6,8 +6,17 @@ export default class Submit {
     Dbg.console('submit exec');
     // Dbg.console(data);
 
+    const ret = {
+      result: false,
+      msg: '',
+    };
+
     axios.post('http://localhost:8000/commit', data).then(response => {
       Dbg.console(response);
+      if (response === true) {
+        ret.result = true;
+      }
+      ret.msg = response.msg;
     });
 
     // axios
@@ -15,5 +24,7 @@ export default class Submit {
     //   .then(response => {
     //     Dbg.console(response);
     //   });
+
+    return ret;
   }
 }

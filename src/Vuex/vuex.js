@@ -10,30 +10,36 @@ const store = new Vuex.Store({
   state: {
     survey: {
       InputData: {},
+      token: '',
+      mail: '',
     },
     ErrorMessage: {},
 
     // is logged in.
     LoggedIn: false,
-    LoginToken: '',
 
     // Question data.
     Questions: [],
   },
   actions: {
     SubmitToServer() {
+      let ret = false;
+
       // validate the data.
       const result = Validate.validate(
         this.state.survey.InputData,
         this.state.Questions,
       );
       if (result.result === true) {
-        Submit.submit(this.state.survey);
+        Dbg.console(this.state.survey);
+        ret = Submit.submit(this.state.survey).result;
       } else {
         // Error is detected.
         Dbg.console(result);
         this.state.ErrorMessage = result.data;
       }
+
+      return ret;
     },
   },
   mutations: {
@@ -42,7 +48,8 @@ const store = new Vuex.Store({
     },
     UpdateLoggedInStatus(state, payload) {
       state.LoggedIn = true;
-      state.LoginToken = payload.token;
+      state.survey.token = payload.token;
+      state.survey.mail = payload.mail;
 
       const obj = Object.values(payload.questions);
       const q = [];

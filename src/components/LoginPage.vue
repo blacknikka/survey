@@ -51,6 +51,7 @@ export default {
               this.$store.commit('UpdateLoggedInStatus', {
                 token: response.data.token,
                 questions: response.data.survey,
+                mail: this.mail,
               });
 
               // Use 'replace'
